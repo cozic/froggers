@@ -259,7 +259,7 @@ class Population:
         for frog in frogs: 
             frog_list.append(frog)
         
-        for i in range(0, 5): 
+        for i in range(0, 3): 
             max = 0
             for j in range(len(frog_list)): 
                 if frog_list[j].fitness > max: 
@@ -269,11 +269,7 @@ class Population:
             frog_list.remove(frog_list[j])
             
         return random.choice(best_five).brain.directions
-
-       
-
-        
-                
+              
     # Selecting a new generation of frogs
     def selection(self):
         best = list(self.bestFrogDirections())
