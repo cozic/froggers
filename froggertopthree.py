@@ -14,7 +14,7 @@ fps = 300  # Simulation speed, can be changed if needed
 frogNum = 100  # Number of frogs in each generation, can be changed if needed
 
 screen = pygame.display.set_mode((screen_width, screen_height))
-pygame.display.set_caption('Frogger-AI-bot (Best Parent)')
+pygame.display.set_caption('Frogger-AI-bot (Top Three)')
 clock = pygame.time.Clock()
 
 all_sprites = pygame.sprite.Group()
@@ -255,7 +255,7 @@ class Population:
     def selectParent(self):
         self.setFitnessSum()
         frog_list = []
-        best_five = []
+        best_three = []
         for frog in frogs: 
             frog_list.append(frog)
         
@@ -265,10 +265,10 @@ class Population:
                 if frog_list[j].fitness > max: 
                     max = frog_list[j].fitness
 
-            best_five.append(frog_list[j])
+            best_three.append(frog_list[j])
             frog_list.remove(frog_list[j])
             
-        return random.choice(best_five).brain.directions
+        return random.choice(best_three).brain.directions
               
     # Selecting a new generation of frogs
     def selection(self):
